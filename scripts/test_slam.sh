@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export TURTLEBOT_GAZEBO_WORLD_FILE=$(pwd)/../map/NewWorld.world
+export TURTLEBOT_GAZEBO_WORLD_FILE=/home/workspace/catkin_ws/src/robotics_se_project_5/map/NewWorld.world
 
 ### xterm  -e  " source /opt/ros/kinetic/setup.bash; roscore" & 
 
