@@ -17,15 +17,7 @@ int main(int argc, char** argv){
     ROS_INFO("Waiting for the move_base action server to come up");
   }
 
-  move_base_msgs::MoveBaseGoal goal;
-
-  // set up the frame parameters
-  goal.target_pose.header.frame_id = "map";
-  goal.target_pose.header.stamp = ros::Time::now();
-
-  // Define a position and orientation for the robot to reach
-  goal.target_pose.pose.position.x = 1.0;
-  goal.target_pose.pose.orientation.w = 1.0;
+  move_base_msgs::MoveBaseGoal goal = makeGoalMsg(1.0);
 
    // Send the goal position and orientation for the robot to reach
   ROS_INFO("Sending goal");
@@ -41,4 +33,17 @@ int main(int argc, char** argv){
     ROS_INFO("The base failed to move forward 1 meter for some reason");
 
   return 0;
+}
+
+move_base_msgs::MoveBaseGoal makeGoalMsg(float x) {
+  move_base_msgs::MoveBaseGoal goal;
+
+  // set up the frame parameters
+  goal.target_pose.header.frame_id = "map";
+  goal.target_pose.header.stamp = ros::Time::now();
+
+  // Define a position and orientation for the robot to reach
+  goal.target_pose.pose.position.x = x;
+  goal.target_pose.pose.orientation.w = 1.0;
+  return goal;
 }
