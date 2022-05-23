@@ -30,14 +30,24 @@ int main(int argc, char** argv){
     ROS_INFO("Waiting for the move_base action server to come up");
   }
 
-  MoveBaseGoal goal = makeGoalMsg(-4.4, -6.0, 0);
+  MoveBaseGoal pick_up_goal = makeGoalMsg(-4.4, -6.0, -1.57);
   // -2, 2.5, 1
-  ac.sendGoal(goal);
+  ac.sendGoal(pick_up_goal);
   ac.waitForResult();
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-    ROS_INFO("Hooray, the base moved 1 meter forward");
+    ROS_INFO("Hooray, the base moved to pick_up_goal");
   else
-    ROS_INFO("The base failed to move forward 1 meter for some reason");
+    ROS_INFO("The base failed to move pick_up_goal for some reason");
+
+  MoveBaseGoal drop_off_goal = makeGoalMsg(-2, 2.5, 0.0);
+  // -2, 2.5, 1
+  ac.sendGoal(drop_off_goal);
+  ac.waitForResult();
+  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+    ROS_INFO("Hooray, the base moved to drop_off_goal");
+  else
+    ROS_INFO("The base failed to move drop_off_goal for some reason");
+
 
   return 0;
 }
