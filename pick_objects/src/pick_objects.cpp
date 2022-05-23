@@ -29,7 +29,7 @@ int main(int argc, char** argv){
     ROS_INFO("Waiting for the move_base action server to come up");
   }
 
-  MoveBaseGoal goal = makeGoalMsg(7.3, -5.0, -1.57);
+  MoveBaseGoal goal = makeGoalMsg(-4.4, -6.0, 0);
   ac.sendGoal(goal);
   ac.waitForResult();
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
