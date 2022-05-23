@@ -1,4 +1,5 @@
 #include <ros/ros.h>
+#include <unistd.h>
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
 
@@ -39,6 +40,8 @@ int main(int argc, char** argv){
   else
     ROS_INFO("The base failed to move pick_up_goal for some reason");
 
+  sleep(5);
+  
   MoveBaseGoal drop_off_goal = makeGoalMsg(-2, 2.5, 0.0);
   // -2, 2.5, 1
   ac.sendGoal(drop_off_goal);
