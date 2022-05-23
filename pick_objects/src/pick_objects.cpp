@@ -20,7 +20,7 @@ int main(int argc, char** argv){
 
   MoveBaseGoal goal = makeGoalMsg(1.0);
 
-   // Send the goal position and orientation for the robot to reach
+  // Send the goal position and orientation for the robot to reach
   ROS_INFO("Sending goal");
   ac.sendGoal(goal);
 
