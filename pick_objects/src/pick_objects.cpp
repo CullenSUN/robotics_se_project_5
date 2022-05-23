@@ -6,17 +6,14 @@
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
 typedef move_base_msgs::MoveBaseGoal MoveBaseGoal;
 
-MoveBaseGoal makeGoalMsg(float x, float y) {
+MoveBaseGoal makeGoalMsg(float x, float y, float yaw) {
   MoveBaseGoal goal;
-
-  // set up the frame parameters
   goal.target_pose.header.frame_id = "map";
   goal.target_pose.header.stamp = ros::Time::now();
 
-  // Define a position and orientation for the robot to reach
   goal.target_pose.pose.position.x = x;
   goal.target_pose.pose.position.y = y;
-  goal.target_pose.pose.orientation.w = 1.0;
+  goal.target_pose.pose.orientation.w = yaw;
   return goal;
 }
 
@@ -32,7 +29,7 @@ int main(int argc, char** argv){
     ROS_INFO("Waiting for the move_base action server to come up");
   }
 
-  MoveBaseGoal goal = makeGoalMsg(1.0, 0.0);
+  MoveBaseGoal goal = makeGoalMsg(7.3, -5.0, -1.57);
   ac.sendGoal(goal);
   ac.waitForResult();
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
