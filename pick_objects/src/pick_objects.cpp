@@ -13,7 +13,8 @@ MoveBaseGoal makeGoalMsg(float x, float y, float yaw) {
 
   goal.target_pose.pose.position.x = x;
   goal.target_pose.pose.position.y = y;
-  goal.target_pose.pose.orientation.w = yaw;
+  goal.target_pose.pose.orientation.z = yaw;
+  goal.target_pose.pose.orientation.w = 1.0;
   return goal;
 }
 
@@ -30,6 +31,7 @@ int main(int argc, char** argv){
   }
 
   MoveBaseGoal goal = makeGoalMsg(-4.4, -6.0, 0);
+  // -2, 2.5, 1
   ac.sendGoal(goal);
   ac.waitForResult();
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
