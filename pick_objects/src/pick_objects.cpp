@@ -37,7 +37,7 @@ int main(int argc, char** argv){
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
     ROS_INFO("Hooray, the base moved to pick_up_goal");
   else
-    ROS_INFO("The base failed to move pick_up_goal for some reason");
+    ROS_INFO("The base failed to move to pick_up_goal for some reason");
 
   sleep(5);
 
@@ -48,7 +48,7 @@ int main(int argc, char** argv){
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
     ROS_INFO("Hooray, the base moved to drop_off_goal");
   else
-    ROS_INFO("The base failed to move drop_off_goal for some reason");
+    ROS_INFO("The base failed to move to drop_off_goal for some reason");
 
 
   return 0;
