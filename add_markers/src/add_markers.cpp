@@ -48,7 +48,6 @@ int main( int argc, char** argv )
 {
   ros::init(argc, argv, "add_marker");
   ros::NodeHandle n;
-  ros::Rate r(1);
   ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
 
   visualization_msgs::Marker marker = new_marker(-1.0, 0.0);
@@ -56,7 +55,7 @@ int main( int argc, char** argv )
   sleep(5);
 
   marker.action = visualization_msgs::Marker::DELETE;
-  marker_pub.publish(marker1);
+  marker_pub.publish(marker);
 
   visualization_msgs::Marker marker1 = new_marker(1.0, 0.0);
   marker_pub.publish(marker1);
