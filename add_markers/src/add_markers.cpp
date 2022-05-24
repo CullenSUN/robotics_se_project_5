@@ -41,7 +41,7 @@ visualization_msgs::Marker new_marker(float x, float y) {
 
     marker.lifetime = ros::Duration();
 
-    return marker
+    return marker;
 }
 
 int main( int argc, char** argv )
