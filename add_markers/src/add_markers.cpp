@@ -52,10 +52,11 @@ int main( int argc, char** argv )
 
   visualization_msgs::Marker marker = new_marker(-1.0, 0.0);
   marker_pub.publish(marker);
-  sleep(5);
+  sleep(10);
 
   marker.action = visualization_msgs::Marker::DELETE;
   marker_pub.publish(marker);
+  sleep(10);
 
   visualization_msgs::Marker marker1 = new_marker(1.0, 0.0);
   marker_pub.publish(marker1);
