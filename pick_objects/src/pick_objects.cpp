@@ -1,5 +1,4 @@
 #include <ros/ros.h>
-#include <unistd.h>
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
 
@@ -19,7 +18,7 @@ MoveBaseGoal makeGoalMsg(float x, float y, float yaw) {
   return goal;
 }
 
-int main(int argc, char** argv){
+int main(int argc, char** argv) {
   // Initialize the simple_navigation_goals node
   ros::init(argc, argv, "pick_objects");
 
@@ -42,7 +41,6 @@ int main(int argc, char** argv){
   sleep(5);
 
   MoveBaseGoal drop_off_goal = makeGoalMsg(-2, 2.5, 0.0);
-  // -2, 2.5, 1
   ac.sendGoal(drop_off_goal);
   ac.waitForResult();
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
