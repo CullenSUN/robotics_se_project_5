@@ -1,4 +1,7 @@
 bool add_or_delete # e.g. true for add / false for delete
+int64 id
+float64 x
+float64 y
 ---
 bool success   # indicate successful or not
 string message # informational, e.g. for error messages
