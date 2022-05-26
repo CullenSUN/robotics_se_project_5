@@ -1,0 +1,4 @@
+bool add_or_delete # e.g. true for add / false for delete
+---
+bool success   # indicate successful or not
+string message # informational, e.g. for error messages
