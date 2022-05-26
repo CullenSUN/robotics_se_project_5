@@ -71,4 +71,5 @@ int main(int argc, char** argv)
   ros::NodeHandle nh;
   MarkersManager manager = MarkersManager(&nh);
   ros::spin();
+  return 0;
 }

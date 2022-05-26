@@ -45,7 +45,7 @@ visualization_msgs::Marker new_marker(int id, float x, float y) {
 
 int main(int argc, char** argv)
 {
-  ros::init(argc, argv, "add_marker");
+  ros::init(argc, argv, "add_markers");
   ros::NodeHandle n;
   ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
   
