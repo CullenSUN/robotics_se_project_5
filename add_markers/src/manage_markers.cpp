@@ -52,12 +52,14 @@ public:
     int action;
     if (req.add_or_delete) {
       action = visualization_msgs::Marker::ADD;
+      ROS_INFO("request: id=%d, x=%.1f, y=%.1f, action=ADD", req.id, req.x, req.y);
     } else {
       action = visualization_msgs::Marker::DELETE;
+      ROS_INFO("request: id=%d, x=%.1f, y=%.1f, action=DELETE", req.id, req.x, req.y);
     }
+
     visualization_msgs::Marker marker = make_marker(req.id, req.x, req.y, action);
     pub.publish(marker);
-    ROS_INFO("request: id=%d, x=%f, y=%f, action=%d", req.id, req.x, req.y, action);
 
     res.success = true;
     res.message = "Marker updated";

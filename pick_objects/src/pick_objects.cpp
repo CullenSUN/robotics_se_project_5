@@ -37,7 +37,7 @@ private:
     srv.request.x = x;
     srv.request.y = y;
     if (client.call(srv)) {
-      ROS_INFO("response: %s", srv.response.message);
+      ROS_INFO("srv UpdateMarker response: %s", srv.response.message.c_str());
     } else {
       ROS_ERROR("Failed to call service update_marker");
     }
@@ -49,7 +49,6 @@ public:
   }
 
   void execute_task() {
-    //tell the action client that we want to spin a thread by default
     MoveBaseClient ac("move_base", true);
 
     // Wait 5 sec for move_base action server to come up
@@ -63,11 +62,12 @@ public:
     ac.waitForResult();
     if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
       update_marker(false, pick_up_marker_id, std::get<0>(pick_up_pose), std::get<1>(pick_up_pose));
-      ROS_INFO("Hooray, the base moved to pick_up_goal");
+      ROS_INFO("Hooray, the robot moved to pick_up_goal");
     } else {
-      ROS_INFO("The base failed to move to pick_up_goal for some reason");
+      ROS_INFO("The robot failed to move to pick_up_goal for some reason");
     }
 
+    // Wait 5 sec to simulate pick up
     sleep(5);
 
     move_base_msgs::MoveBaseGoal drop_off_goal = makeGoalMsg(drop_off_pose);
@@ -75,9 +75,9 @@ public:
     ac.waitForResult();
     if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
       update_marker(true, drop_off_marker_id, std::get<0>(drop_off_pose), std::get<1>(drop_off_pose));
-      ROS_INFO("Hooray, the base moved to drop_off_goal");
+      ROS_INFO("Hooray, the robot moved to drop_off_goal");
     } else {
-      ROS_INFO("The base failed to move to drop_off_goal for some reason");
+      ROS_INFO("The robot failed to move to drop_off_goal for some reason");
     }
   }
 
