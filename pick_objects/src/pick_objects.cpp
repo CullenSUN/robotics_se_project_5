@@ -15,8 +15,8 @@ private:
   int drop_off_marker_id = 2;
 
   // pose.position.x, pose.position.y, pose.orientation.z
-  std::tuple<float, float, float> pick_up_pose = {-5.0, -7.0, 1.57}; 
-  std::tuple<float, float, float> drop_off_pose = {-2.0, 2.5, 0.0}; 
+  std::tuple<float, float, float> pick_up_pose (-5.0, -7.0, 1.57); 
+  std::tuple<float, float, float> drop_off_pose (-2.0, 2.5, 0.0); 
 
   move_base_msgs::MoveBaseGoal makeGoalMsg(std::tuple<float, float, float> pose) {
     move_base_msgs::MoveBaseGoal goal;
