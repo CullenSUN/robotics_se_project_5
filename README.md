@@ -8,7 +8,7 @@ I mainly created the following two packages:
 
 The `pick_objects` node requests the `manage_markers` node to add or delete markers through "UpdateMarker" service. 
 
-##How to run
+## How to run
 
 Clone the following packages to your catkin_ws
 - [gmapping](http://wiki.ros.org/turtlebot_gazebo)
