@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
   int drop_off_marker_id = 2;
 
   MoveBaseGoal pick_up_goal = makeGoalMsg(-5, -7.0, 1.57);
-  update_marker(&client, true, -5, -7.0, marker_id);
+  update_marker(&client, true, -5, -7.0, pick_up_marker_id);
   ac.sendGoal(pick_up_goal);
   ac.waitForResult();
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
