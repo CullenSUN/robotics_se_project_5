@@ -45,14 +45,16 @@ int main(int argc, char** argv) {
   while(!ac.waitForServer(ros::Duration(5.0))){
     ROS_INFO("Waiting for the move_base action server to come up");
   }
-  int marker_id = 9;
+  
+  int pick_up_marker_id = 1;
+  int drop_off_marker_id = 2;
 
   MoveBaseGoal pick_up_goal = makeGoalMsg(-5, -7.0, 1.57);
   update_marker(&client, true, -5, -7.0, marker_id);
   ac.sendGoal(pick_up_goal);
   ac.waitForResult();
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
-    update_marker(&client, false, -5, -7.0, marker_id);
+    update_marker(&client, false, pick_up_marker_id, -5, -7.0);
     ROS_INFO("Hooray, the base moved to pick_up_goal");
   } else {
     ROS_INFO("The base failed to move to pick_up_goal for some reason");
@@ -64,7 +66,7 @@ int main(int argc, char** argv) {
   ac.sendGoal(drop_off_goal);
   ac.waitForResult();
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
-    update_marker(&client, true, -2, 2.5, marker_id);
+    update_marker(&client, true, drop_off_marker_id, -2, 2.5);
     ROS_INFO("Hooray, the base moved to drop_off_goal");
   } else {
     ROS_INFO("The base failed to move to drop_off_goal for some reason");

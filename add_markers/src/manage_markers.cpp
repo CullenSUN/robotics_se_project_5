@@ -56,7 +56,7 @@ public:
     }
     visualization_msgs::Marker marker = make_marker(req.id, req.x, req.y, action);
     pub.publish(marker);
-    ROS_INFO("request: id=%d, x=%f, y=%f, action:%s", req.id, req.x, req.y, action);
+    ROS_INFO("request: id=%d, x=%f, y=%f, action=%d", req.id, req.x, req.y, action);
 
     res.success = true;
     res.message = "Marker updated";
