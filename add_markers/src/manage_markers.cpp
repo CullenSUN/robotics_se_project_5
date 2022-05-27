@@ -3,6 +3,7 @@
 #include <add_markers/UpdateMarker.h>
 
 class MarkersManager {
+  
 private:
   ros::ServiceServer service;
   ros::Publisher pub;
