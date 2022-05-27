@@ -37,7 +37,7 @@ private:
     srv.request.x = x;
     srv.request.y = y;
     if (client.call(srv)) {
-      ROS_INFO("srv UpdateMarker response: %s", srv.response.message.c_str());
+      ROS_INFO("srv response: %s", srv.response.message.c_str());
     } else {
       ROS_ERROR("Failed to call service update_marker");
     }
