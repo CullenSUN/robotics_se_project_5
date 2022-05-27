@@ -69,6 +69,7 @@ int main(int argc, char** argv) {
   } else {
     ROS_INFO("The base failed to move to drop_off_goal for some reason");
   }
-
+  
+  ros::spin();
   return 0;
 }
