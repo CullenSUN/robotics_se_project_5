@@ -51,22 +51,24 @@ int main(int argc, char** argv) {
   update_marker(&client, true, -5, -7.0, marker_id);
   ac.sendGoal(pick_up_goal);
   ac.waitForResult();
-  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
     update_marker(&client, false, -5, -7.0, marker_id);
     ROS_INFO("Hooray, the base moved to pick_up_goal");
-  else
+  } else {
     ROS_INFO("The base failed to move to pick_up_goal for some reason");
+  }
 
   sleep(5);
 
   MoveBaseGoal drop_off_goal = makeGoalMsg(-2, 2.5, 0.0);
   ac.sendGoal(drop_off_goal);
   ac.waitForResult();
-  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) {
     update_marker(&client, true, -2, 2.5, marker_id);
     ROS_INFO("Hooray, the base moved to drop_off_goal");
-  else
+  } else {
     ROS_INFO("The base failed to move to drop_off_goal for some reason");
+  }
 
   return 0;
 }
