@@ -28,7 +28,7 @@ void update_marker(ros::ServiceClient *client, bool add_or_delete, int id, float
   if (client->call(srv)) {
     ROS_INFO("response: %s", srv.response.message);
   } else {
-    ROS_ERROR("Failed to call service add_two_ints");
+    ROS_ERROR("Failed to call service update_marker");
   }
 }
 

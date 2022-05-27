@@ -43,7 +43,7 @@ private:
 
 public:
   MarkersManager(ros::NodeHandle *nh) {
-    service = nh.advertiseService("/update_marker", &MarkersManager::update, this);
+    service = nh.advertiseService("update_marker", &MarkersManager::update, this);
     pub = nh.advertise<visualization_msgs::Marker>("visualization_marker", 1);
   }
 
