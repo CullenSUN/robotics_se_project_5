@@ -10,7 +10,7 @@ typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseCl
 class ObjectPicker {
 
 private:
-  ros::ServiceServer client;
+  ros::ServiceClient client;
   int pick_up_marker_id = 1;
   int drop_off_marker_id = 2;
 
