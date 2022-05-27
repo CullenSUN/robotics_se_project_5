@@ -7,7 +7,7 @@ private:
   ros::ServiceServer service;
   ros::Publisher pub;
 
-  visualization_msgs::Marker make_marker(int id, float x, float y, string action) {
+  visualization_msgs::Marker make_marker(int id, float x, float y, int action) {
     visualization_msgs::Marker marker;
     marker.header.frame_id = "map";
     marker.header.stamp = ros::Time::now();
@@ -48,7 +48,7 @@ public:
   }
 
   bool update(add_markers::UpdateMarker::Request &req, add_markers::UpdateMarker::Response &res) {
-    string action;
+    int action;
     if (req.add_or_delete) {
       action = visualization_msgs::Marker::ADD;
     } else {
